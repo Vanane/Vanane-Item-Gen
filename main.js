@@ -53,8 +53,7 @@ function GenerateSyntax(str)
 	[...str.matchAll(/\{([a-zA-Z]+)\}/g)].map((e) =>
 	{
 		var syntax = words[e[1]][RandomInt(0, words[e[1]].length - 1)];
-		var r = new RegExp("\\{" + e[1] + "\\}");
-		str = str.replace(r, GenerateSyntax(syntax));
+		str = str.replace(e[0], GenerateSyntax(syntax));
 	});
 	return str;
 }
